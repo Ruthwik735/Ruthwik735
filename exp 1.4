@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class BankingSystem {
+    
+    // Class to represent an Account Holder
+    static class Account {
+        String accountHolderName;
+        double balance;
+
+        public Account(String name, double balance) {
+            this.accountHolderName = name;
+            this.balance = balance;
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+        // Sample list of account holders and their balances
+        Account[] accounts = {
+            new Account("Alice", 1500.00),
+            new Account("Bob", 2500.50),
+            new Account("Charlie", 3500.75)
+        };
+        
+        // Sample transaction IDs
+        int[] transactionIDs = {101, 102, 103};
+
+        // Variables to store the total balance
+        double totalBalance = 0;
+        int accountCount = 0;
+
+        // Try-catch block for calculating average balance and managing exceptions
+        try {
+            // Calculating total balance
+            for (Account account : accounts) {
+                totalBalance += account.balance;
+                accountCount++;
+            }
+
+            // Calculating average balance
+            if (accountCount == 0) {
+                throw new ArithmeticException("Cannot calculate average balance: No account holders.");
+            }
+            
+            double averageBalance = totalBalance / accountCount;
+            System.out.println("Average Account Balance: " + averageBalance);
+
+            // Verifying a transaction ID from the array
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a transaction ID to verify: ");
+            int transactionID = scanner.nextInt();
+
+            // Check if the transaction ID is valid (within bounds)
+            try {
+                System.out.println("Transaction ID " + transactionID + " is valid: " +
+                        transactionIDs[transactionID - 101]); // Subtracting 101 for 0-based index
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: Invalid Transaction ID.");
+            }
+            
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Unexpected Error: " + e.getMessage());
+        }
+    }
+}
