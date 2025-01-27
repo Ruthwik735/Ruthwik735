@@ -1,0 +1,37 @@
+// Employee class
+class Employee {
+    String name;
+    double salary;
+
+    // Default constructor
+    public Employee() {
+        this.name = "Unknown";
+        this.salary = 0;
+    }
+
+    // Overloaded constructor
+    public Employee(String name) {
+        this.name = name;
+        this.salary = 5000; // Default salary when only name is provided
+    }
+
+    // Method to display employee details
+    public void displayEmployeeDetails() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+        // Creating Employee objects using both constructors
+        Employee emp1 = new Employee(); // Using default constructor
+        Employee emp2 = new Employee("John Doe"); // Using overloaded constructor with name
+
+        // Displaying employee details
+        System.out.println("Employee 1 Details:");
+        emp1.displayEmployeeDetails();
+        System.out.println();
+
+        System.out.println("Employee 2 Details:");
+        emp2.displayEmployeeDetails();
+    }
+}
