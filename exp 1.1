@@ -1,0 +1,43 @@
+// Base class Animal
+class Animal {
+    // Method to output a generic sound
+    public void makeSound() {
+        System.out.println("This is a generic animal sound.");
+    }
+}
+
+// Derived class Dog
+class Dog extends Animal {
+    // Override makeSound() to produce a Dog's specific sound
+    @Override
+    public void makeSound() {
+        System.out.println("Woof! Woof!");
+    }
+}
+
+// Derived class Cat
+class Cat extends Animal {
+    // Override makeSound() to produce a Cat's specific sound
+    @Override
+    public void makeSound() {
+        System.out.println("Meow! Meow!");
+    }
+}
+
+public class AnimalSoundDemo {
+    public static void main(String[] args) {
+        // Demonstrating polymorphism
+
+        // Animal reference holding a Dog object
+        Animal myDog = new Dog();
+        myDog.makeSound();  // Output: Woof! Woof!
+
+        // Animal reference holding a Cat object
+        Animal myCat = new Cat();
+        myCat.makeSound();  // Output: Meow! Meow!
+
+        // Animal reference holding an Animal object (generic sound)
+        Animal myAnimal = new Animal();
+        myAnimal.makeSound();  // Output: This is a generic animal sound.
+    }
+}
